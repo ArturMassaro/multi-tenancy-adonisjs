@@ -6,7 +6,11 @@ export default class Tenants extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.uuid('uuid').unique().notNullable()
+      table
+        .uuid('uuid')
+        .unique()
+        .notNullable()
+        .defaultTo(this.db.rawQuery('uuid_generate_v4()').knexQuery)
       table.text('db_name').unique().notNullable()
       table.text('db_host').notNullable()
       table.text('db_username').notNullable()

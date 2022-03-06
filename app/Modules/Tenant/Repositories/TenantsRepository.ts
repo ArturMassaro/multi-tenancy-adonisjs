@@ -7,4 +7,10 @@ export default class TenantsRepository implements ITenant.Repository {
   constructor() {
     this.orm = Tenant
   }
+
+  public async create(data: ITenant.DTO.Store): Promise<Tenant> {
+    return this.orm.create(data, {
+      connection: 'main',
+    })
+  }
 }

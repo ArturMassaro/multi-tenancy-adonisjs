@@ -1,5 +1,9 @@
+import Tenant from 'App/Modules/Tenant/Models/Tenant'
+
 export namespace ITenant {
-  export interface Repository extends Helpers {}
+  export interface Repository extends Helpers {
+    create(data: ITenant.DTO.Store): Promise<Tenant>
+  }
 
   export interface Helpers {}
 

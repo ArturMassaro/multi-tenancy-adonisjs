@@ -33,7 +33,7 @@ const databaseConfig: DatabaseConfig = {
     | npm i pg
     |
     */
-    pg: {
+    main: {
       client: 'pg',
       connection: {
         host: Env.get('PG_HOST'),
@@ -45,8 +45,8 @@ const databaseConfig: DatabaseConfig = {
       migrations: {
         naturalSort: true,
       },
-      healthCheck: false,
-      debug: false,
+      healthCheck: true,
+      debug: true,
     },
   },
 }

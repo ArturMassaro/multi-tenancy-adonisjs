@@ -26,10 +26,13 @@
     "@adonisjs/core": "^5.4.0",
     "@adonisjs/lucid": "^17.0.1",
     "@adonisjs/repl": "^3.1.0",
+    "@types/uuid": "^8.3.4",
     "luxon": "^2.3.1",
     "pg": "^8.7.3",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "tsyringe": "^4.6.0",
+    "uuid": "^8.3.2"
   }
 }

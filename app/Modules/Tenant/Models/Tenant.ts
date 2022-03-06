@@ -1,11 +1,13 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
-
+import { v4 } from 'uuid'
 export default class Tenant extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column()
+  @column({
+    prepare: () => v4(),
+  })
   public uuid: string
 
   @column()

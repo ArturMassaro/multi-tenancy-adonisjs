@@ -9,6 +9,7 @@ export default class AppProvider {
 
   public async boot() {
     // IoC container is ready
+    await import('../app/Shared/Container/index')
   }
 
   public async ready() {

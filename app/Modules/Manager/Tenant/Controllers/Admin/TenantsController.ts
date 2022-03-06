@@ -1,8 +1,8 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { container } from 'tsyringe'
 
-import { CreateTenantService } from 'App/Modules/Tenant/Services/Tenant'
-import { TenantValidator } from 'App/Modules/Tenant/Validators/TenantValidor'
+import { CreateTenantService } from 'App/Modules/Manager/Tenant/Services/Tenant'
+import { TenantValidator } from 'App/Modules/Manager/Tenant/Validators/TenantValidor'
 export default class TenantsController {
   public async store({ request, response }: HttpContextContract): Promise<void> {
     const data = await request.validate(TenantValidator.Store)

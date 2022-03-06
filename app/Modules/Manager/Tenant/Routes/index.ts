@@ -8,4 +8,4 @@ Route.get('/', async () => {
 Route.group(() => {
   /** Tenant Routes */
   Route.post('/tenant', new TenantsController().store)
-}).prefix('admin')
+}).prefix('root')

@@ -18,4 +18,4 @@
 |
 */
 
-import 'App/Modules/Tenant/Routes/index'
+import 'App/Modules/Manager/Tenant/Routes/index'

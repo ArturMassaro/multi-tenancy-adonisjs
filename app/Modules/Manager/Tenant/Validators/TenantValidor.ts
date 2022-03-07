@@ -17,4 +17,22 @@ export namespace TenantValidator {
       db_password: schema.string.optional(),
     })
   }
+  export class Update {
+    constructor(protected ctx: HttpContextContract) {}
+
+    public schema = schema.create({
+      db_name: schema.string.optional({}, [
+        rules.unique({
+          table: 'tenants',
+          column: 'db_name',
+          whereNot: {
+            uuid: this.ctx.params.uuid ? this.ctx.params.uuid : null,
+          },
+        }),
+      ]),
+      db_host: schema.string.optional(),
+      db_username: schema.string.optional(),
+      db_password: schema.string.optional(),
+    })
+  }
 }

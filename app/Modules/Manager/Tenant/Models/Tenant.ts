@@ -19,7 +19,7 @@ export default class Tenant extends BaseModel {
   @column()
   public db_username: string
 
-  @column()
+  @column({ serializeAs: null })
   public db_password: string
 
   @column.dateTime({ autoCreate: true })

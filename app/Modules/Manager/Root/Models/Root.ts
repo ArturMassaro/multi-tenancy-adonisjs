@@ -27,7 +27,7 @@ export default class Root extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  public access_types = {
+  public static access_types = {
     common: 'common_user',
     super_admin: 'super_admin',
   }

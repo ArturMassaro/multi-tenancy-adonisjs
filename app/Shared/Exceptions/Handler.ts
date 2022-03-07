@@ -15,9 +15,25 @@
 
 import Logger from '@ioc:Adonis/Core/Logger'
 import HttpExceptionHandler from '@ioc:Adonis/Core/HttpExceptionHandler'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   constructor() {
     super(Logger)
+  }
+
+  public async handle(error: any, ctx: HttpContextContract) {
+    /**
+     * Self handle the validation exception
+     */
+
+    if (error.code === undefined) {
+      return ctx.response.status(422).send({
+        message: 'Something went wrong',
+        error: error.message,
+      })
+    } else {
+      return super.handle(error, ctx)
+    }
   }
 }

@@ -1,5 +1,4 @@
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
-
 export default class AppProvider {
   constructor(protected app: ApplicationContract) {}
 
@@ -14,6 +13,13 @@ export default class AppProvider {
 
   public async ready() {
     // App is ready
+    const { container } = await import('tsyringe')
+    const { ConnectAllTenantsService } = await import(
+      '../app/Modules/Manager/Tenant/Services/Connection/index'
+    )
+
+    const connectService = container.resolve(ConnectAllTenantsService)
+    await connectService.run()
   }
 
   public async shutdown() {

@@ -14,8 +14,10 @@ export default class Acl {
     const { user } = auth
     const accessType = user!.access_type
 
-    if (aclRoles.includes(accessType)) await next()
-
-    throw new Error('User not allowed')
+    if (aclRoles.includes(accessType)) {
+      await next()
+    } else {
+      throw new Error('User not allowed')
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export namespace TenantValidator {
@@ -6,7 +6,12 @@ export namespace TenantValidator {
     constructor(protected ctx: HttpContextContract) {}
 
     public schema = schema.create({
-      db_name: schema.string(),
+      db_name: schema.string({}, [
+        rules.unique({
+          table: 'tenants',
+          column: 'db_name',
+        }),
+      ]),
       db_host: schema.string(),
       db_username: schema.string(),
       db_password: schema.string.optional(),

@@ -1,4 +1,5 @@
 import Route from '@ioc:Adonis/Core/Route'
+import AccessTypes from 'App/Shared/Types/AccessTypes'
 import TenantsController from '../Controllers/Admin/TenantsController'
 
 Route.get('/', async () => {
@@ -8,4 +9,6 @@ Route.get('/', async () => {
 Route.group(() => {
   /** Tenant Routes */
   Route.post('/tenant', new TenantsController().store)
-}).prefix('admin')
+})
+  .prefix('root')
+  .middleware(['auth', `acl:${AccessTypes.super_admin}`])

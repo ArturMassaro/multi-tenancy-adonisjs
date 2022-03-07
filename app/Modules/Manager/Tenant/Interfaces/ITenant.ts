@@ -1,4 +1,4 @@
-import Tenant from 'App/Modules/Tenant/Models/Tenant'
+import Tenant from 'App/Modules/Manager/Tenant/Models/Tenant'
 
 export namespace ITenant {
   export interface Repository extends Helpers {

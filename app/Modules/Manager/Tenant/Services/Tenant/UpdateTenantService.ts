@@ -1,3 +1,4 @@
+import NotFoundException from 'App/Shared/Exceptions/NotFoundException'
 import { inject, injectable } from 'tsyringe'
 import { ITenant } from '../../Interfaces/ITenant'
 
@@ -11,7 +12,7 @@ export class UpdateTenantService {
   public async run(uuid: number, updateDate: ITenant.DTO.Update) {
     const tenant = await this.tenantsRepository.show(uuid)
 
-    if (!tenant) throw new Error('Tenant not found')
+    if (!tenant) throw new NotFoundException('Tenant not found')
 
     tenant.merge(updateDate)
 

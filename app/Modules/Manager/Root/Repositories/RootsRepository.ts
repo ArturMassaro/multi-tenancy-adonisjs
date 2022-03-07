@@ -19,4 +19,10 @@ export default class RootsRepository implements IRoot.Repository {
       connection: 'main',
     })
   }
+
+  public async findBy(findKey: string, findValue: any): Promise<Root | null> {
+    return this.orm.findBy(findKey, findValue, {
+      connection: 'main',
+    })
+  }
 }

@@ -7,6 +7,7 @@ export namespace IRoot {
 
   export interface Helpers {
     findOrCreate(findObject: Object, createObject: IRoot.DTO.Store): Promise<Root>
+    findBy(findKey: string, findValue: any): Promise<Root | null>
   }
 
   export namespace DTO {

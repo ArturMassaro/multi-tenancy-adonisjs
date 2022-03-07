@@ -8,6 +8,7 @@ import {
   UpdateTenantService,
   DeleteTenantService,
 } from 'App/Modules/Manager/Tenant/Services/Tenant'
+import { ConnectAllTenantsService } from 'App/Modules/Manager/Tenant/Services/Connection'
 import { TenantValidator } from 'App/Modules/Manager/Tenant/Validators/TenantValidor'
 export default class TenantsController {
   public async index({ request, response }: HttpContextContract): Promise<void> {
@@ -61,5 +62,13 @@ export default class TenantsController {
     await deleteService.run(uuid, data)
 
     return response.json({ msg: 'Tenant deleted' })
+  }
+
+  public async connect({ response }: HttpContextContract): Promise<void> {
+    const connectService = container.resolve(ConnectAllTenantsService)
+
+    await connectService.run()
+
+    return response.json({ msg: 'Tenant connect' })
   }
 }

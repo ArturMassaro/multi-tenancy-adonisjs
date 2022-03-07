@@ -8,6 +8,8 @@ Route.get('/', async () => {
 
 Route.group(() => {
   Route.group(() => {
+    Route.post('/tenant/connect', new TenantsController().connect)
+
     /** Tenant Routes */
     Route.post('/tenant', new TenantsController().store)
     Route.get('/tenant', new TenantsController().index)

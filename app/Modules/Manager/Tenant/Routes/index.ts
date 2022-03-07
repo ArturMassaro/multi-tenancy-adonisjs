@@ -7,8 +7,10 @@ Route.get('/', async () => {
 })
 
 Route.group(() => {
-  /** Tenant Routes */
-  Route.post('/tenant', new TenantsController().store)
-})
-  .prefix('root')
-  .middleware(['auth', `acl:${AccessTypes.super_admin}`])
+  Route.group(() => {
+    /** Tenant Routes */
+    Route.post('/tenant', new TenantsController().store)
+  })
+    .prefix('root')
+    .middleware(['auth', `acl:${AccessTypes.super_admin}`])
+}).prefix('v1')

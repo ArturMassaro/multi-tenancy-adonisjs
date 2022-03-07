@@ -3,8 +3,10 @@ import RootsController from 'App/Modules/Manager/Root/Controllers/Admin/RootsCon
 import AccessTypes from 'App/Shared/Types/AccessTypes'
 
 Route.group(() => {
-  /** Root Routes */
-  Route.post('/root', new RootsController().store)
-})
-  .prefix('root')
-  .middleware(['auth', `acl:${AccessTypes.super_admin}`])
+  Route.group(() => {
+    /** Root Routes */
+    Route.post('/root', new RootsController().store)
+  })
+    .prefix('root')
+    .middleware(['auth', `acl:${AccessTypes.super_admin}`])
+}).prefix('v1')
